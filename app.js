@@ -1,48 +1,41 @@
-let friends = [];
+let amigos = [];
 
-function addFriend() {
-    const inputField = document.getElementById('friend');
-    const friendName = inputField.value.trim();
-    
-    if (friendName === "") {
-        alert("Por favor, insira um nome");
+function adicionarAmigo() {
+    let input = document.getElementById("amigo");
+    let nome = input.value.trim();
+
+    if (nome === "") {
+        alert("Por favor, insira um nome válido.");
         return;
     }
-    
-    if (friends.includes(friendName)) {
-        alert("Este nome já consta na lista, por favor: insira outro nome");
-        inputField.value = "";
-        return;
-    }
-    
-    friends.push(friendName);
-    
-    updateList();
-    inputField.value = "";
-    inputField.focus();
+
+    amigos.push(nome);
+
+    atualizarLista();
+
+    input.value = "";
+    input.focus();
 }
 
-function updateList() {
-    let list = document.getElementById('friendList');
-    list.innerHTML = "";
-    
-    for (let i = 0; i < friends.length; i++) {
-        const item = document.createElement("li");
-        item.textContent = friends[i];
-        list.appendChild(item);
-    }
+function atualizarLista() {
+    let lista = document.getElementById("listaAmigos");
+    lista.innerHTML = ""; 
+
+    amigos.forEach((amigo) => {
+        let li = document.createElement("li");
+        li.textContent = amigo;
+        lista.appendChild(li);
+    });
 }
 
-function drawFriend() {
-    const result = document.getElementById("result");
-    result.innerHTML = "";
-
-    if (friends.length === 0) {
-        alert("Adicione pelo menos um amigo antes de sortear!");
+function sortearAmigo() {
+    if (amigos.length === 0) {
+        alert("Adicione pelo menos um nome antes de sortear!");
         return;
     }
 
-    const randomIndex = Math.floor(Math.random() * friends.length);
-    const drawnFriend = friends[randomIndex];
-    result.innerHTML = `<li>The secret friend drawn is: <strong>${drawnFriend}</strong></li>`;
+    let sorteado = amigos[Math.floor(Math.random() * amigos.length)];
+
+    let resultado = document.getElementById("resultado");
+    resultado.innerHTML = `<li>🎉 Amigo sorteado: <strong>${sorteado}</strong></li>`;
 }
