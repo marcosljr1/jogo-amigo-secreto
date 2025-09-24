@@ -5,9 +5,9 @@ nomes em um jogo de Amigo Secreto.
 
 ## 🚀 Funcionalidades
 
--   Adicionar nomes de amigos a uma lista.\
--   Exibir os nomes cadastrados em tempo real.\
--   Sortear aleatoriamente um nome da lista.\
+-   Adicionar nomes de amigos a uma lista.
+-   Exibir os nomes cadastrados em tempo real.
+-   Sortear aleatoriamente um nome da lista.
 -   Interface amigável e responsiva.
 
 ## 📂 Estrutura do Projeto
@@ -20,8 +20,8 @@ nomes em um jogo de Amigo Secreto.
      ┣ 📜 style.css
      ┗ 📜 app.js
 
--   **index.html** → Estrutura da aplicação.\
--   **style.css** → Estilização do layout.\
+-   **index.html** → Estrutura da aplicação.
+-   **style.css** → Estilização do layout.
 -   **app.js** → Lógica de adicionar nomes e realizar o sorteio.
 
 ## 🖥️ Como usar
