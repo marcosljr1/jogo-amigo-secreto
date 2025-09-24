@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secret Friend Draw</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input {
+      width: 70%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin-left: 8px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007BFF;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+
+    ul li {
+      padding: 8px;
+      background: #f1f1f1;
+      margin: 5px 0;
+      border-radius: 6px;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    #result strong {
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Secret Friend</h1>
+    
+    <div>
+      <input type="text" id="friend" placeholder="Enter a name" />
+      <button onclick="addFriend()">Add</button>
+    </div>
+    
+    <ul id="friendList"></ul>
+    
+    <button style="margin-top:15px; background:#28a745;" onclick="drawFriend()">Draw Friend</button>
+    
+    <ul id="result"></ul>
+  </div>
+
+  <script>
+    let friends = [];
+
+    function addFriend() {
+        const inputField = document.getElementById('friend');
+        const friendName = inputField.value.trim();
+        
+        if (friendName === "") {
+            alert("Por favor, insira um nome");
+            return;
+        }
+        
+        if (friends.includes(friendName)) {
+            alert("Este nome já consta na lista, por favor: insira outro nome");
+            inputField.value = "";
+            return;
+        }
+        
+        friends.push(friendName);
+        
+        updateList();
+        inputField.value = "";
+        inputField.focus();
+    }
+
+    function updateList() {
+        let list = document.getElementById('friendList');
+        list.innerHTML = "";
+        
+        for (let i = 0; i < friends.length; i++) {
+            const item = document.createElement("li");
+            item.textContent = friends[i];
+            list.appendChild(item);
+        }
+    }
+
+    function drawFriend() {
+        const result = document.getElementById("result");
+        result.innerHTML = "";
+
+        if (friends.length === 0) {
+            alert("Adicione pelo menos um amigo antes de sortear!");
+            return;
+        }
+
+        const randomIndex = Math.floor(Math.random() * friends.length);
+        const drawnFriend = friends[randomIndex];
+        result.innerHTML = `<li>The secret friend drawn is: <strong>${drawnFriend}</strong></li>`;
+    }
+  </script>
+</body>
+</html>
